@@ -7,7 +7,7 @@ Fonctionnalité: Passer une commande
   Eric est un client Lillois connu. Tous les modes de livraison lui sont possibles.
   Valérie est une nouvelle cliente habitante d'une zone non déservie.
 
-
+Règle: Identification
   Scénario: Le système reconnait Eric
 
   Etant donné que Eric a activé le bouton "Passer une commande"
@@ -28,7 +28,8 @@ Fonctionnalité: Passer une commande
   Etant donné que Valérie a activé le bouton "Passer une commande"
   Quand Valérie fournit un email non-connu
   Alors le système propose le formulaire d'inscription
-  
+
+Règle: Livraison
   Scénario: Seul le mode de livraison magasin est possible pour Valérie
 
   Etant donné que Valérie a activé le bouton "Passer une commande"
