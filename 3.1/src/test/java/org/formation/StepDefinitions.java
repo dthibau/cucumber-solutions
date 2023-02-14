@@ -14,6 +14,7 @@ import org.formation.service.SimpleLivraisonService;
 
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Etantdonnéque;
+import io.cucumber.java.fr.Etque;
 import io.cucumber.java.fr.Quand;
 
 public class StepDefinitions {
@@ -21,30 +22,30 @@ public class StepDefinitions {
 	LivraisonServiceIF livraisonService;
 	Optional<Client> currentClient;
 
-	@Etantdonnéque("(\\w+) a activé le bouton \"Passer une commande\"")
+	@Etantdonnéque("Eric/Valérie a activé le bouton \"Passer une commande\"")
 	public void a_activé_le_bouton() {
 	    livraisonService = new SimpleLivraisonService();
 	}
 
-	@Quand("(\\w+) fournit un email reconnu")
-	public void fournit_un_email_reconnu() {
+	@Quand("^(\\w+) fournit un email reconnu$")
+	public void fournit_un_email_reconnu(String nom) {
 		currentClient = livraisonService.getClientFromEmail("toto@known.com");
 	}
 
-	@Alors("le système affiche les informations de (\\w+)")
-	public void le_système_affiche_les_informations_de() {
+	@Alors("^le système affiche les informations de (\\w+)$")
+	public void le_système_affiche_les_informations_de(String nom) {
 	    assertTrue(currentClient.isPresent());
 	}
 
 
-	@Quand("(\\w+) valide ses informations personelles")
-	public void valide_ses_informations_personelles() {
+	@Quand("^(\\w+) valide ses informations personelles$")
+	public void valide_ses_informations_personelles(String nom) {
 	    // Write code here that turns the phrase above into concrete actions
 	    // Nothing to do
 	}
 
 
-	@Quand("(\\w+) fournit un email non-connu")
+	@Quand("^Valérie fournit un email non-connu$")
 	public void fournit_un_email_non_connu() {
 		currentClient = livraisonService.getClientFromEmail("toto@knownnot.com");
 	}
@@ -55,13 +56,13 @@ public class StepDefinitions {
 	}
 
 
-	@Etantdonnéque("(\\w+) a saisi ses informations personelles avec un code postal de {int}")
-	public void a_saisi_ses_informations_personelles(int codePostal) {
+	@Etantdonnéque("{word} a saisi ses informations personelles avec un code postal de {int}")
+	public void a_saisi_ses_informations_personelles(String nom, int codePostal) {
 		currentClient = Optional.of(livraisonService.registerNewClient(codePostal));
 	}
 
 
-	@Alors("^les modes de réception proposés sont :")
+	@Alors("^les modes de réception proposés sont :$")
 	public void les_modes_de_réception_proposés_sont(List<String> modes) {
 		Client client = currentClient.orElseThrow(() -> new IllegalStateException("Client is not defined"));
 		List<ModeReception> modeReceptions = Arrays.asList(ModeReception.values());

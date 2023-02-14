@@ -17,7 +17,7 @@ Règle: Identification
   Scénario: Les 2 modes de livraison sont possibles pour Eric
 
   Etant donné que Eric a activé le bouton "Passer une commande"
-  Et que Eric fournit un email reconnu
+  Quand Eric fournit un email reconnu
   Quand Eric valide ses informations personelles
   Alors les modes de réception proposés sont :  
   	| magasin | 
@@ -34,7 +34,7 @@ Règle: Livraison
 
   Etant donné que Valérie a activé le bouton "Passer une commande"
   Et que Valérie a saisi ses informations personelles avec un code postal de 8170
-  Quand Valérie valide ses informations personelles
+  Quand Elle valide ses informations personelles
   Alors les modes de réception proposés sont :
   	| magasin |
   
